@@ -10,42 +10,31 @@ import XCTest
 @testable import QuizEngine
 
 class FlowTest: XCTestCase {
-    
+    let router = RouterSpy()
+
     func test_start_withNoQuestions_doesNotRouteToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: [], router: router)
-        
-        sut.start()
+        makeSUT(questions: []).start()
         
         XCTAssertTrue(router.routedQuestions.isEmpty)
     }
     
     func test_start_withOneQuestion_routesToCorrectQuestion() {
         let q1 = "Q1"
-        let router = RouterSpy()
-        let sut = Flow(questions: [q1], router: router)
-        
-        sut.start()
+        makeSUT(questions: [q1]).start()
         
         XCTAssertEqual(router.routedQuestions, [q1])
     }
     
     func test_start_withTwoQuestion_routesToFirstQuestion() {
-        let q1 = "Q1"
-        let q2 = "Q2"
-        let router = RouterSpy()
-        let sut = Flow(questions: [q1, q2], router: router)
-        
-        sut.start()
+        let q1 = "Q1", q2 = "Q2"
+        makeSUT(questions: [q1, q2]).start()
         
         XCTAssertEqual(router.routedQuestions.first, q1)
     }
     
     func test_startTwice_withTwoQuestion_routesToFirstQuestionTwice() {
-        let q1 = "Q1"
-        let q2 = "Q2"
-        let router = RouterSpy()
-        let sut = Flow(questions: [q1, q2], router: router)
+        let q1 = "Q1", q2 = "Q2"
+        let sut = makeSUT(questions: [q1, q2])
         
         sut.start()
         sut.start()
@@ -56,13 +45,18 @@ class FlowTest: XCTestCase {
     func test_startAndAnswerFirstQuestion_withTwoQuestion_routesToSecondQuestion() {
         let questions = ["Q1", "Q2"]
         let a1 = "A1"
-        let router = RouterSpy()
-        let sut = Flow(questions: questions, router: router)
+        let sut = makeSUT(questions: questions)
         sut.start()
         
         router.answerCallback(a1)
         
         XCTAssertEqual(router.routedQuestions, questions)
+    }
+    
+    // MARK: - Helpers
+    
+    func makeSUT(questions: [String]) -> Flow {
+        return Flow(questions: questions, router: router)
     }
     
     class RouterSpy: Router {
