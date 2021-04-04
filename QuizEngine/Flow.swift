@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Router {
-    func routeTo(question: String)
+    func routeTo(question: String, answerCallback: @escaping (String) -> Void)
 }
 
 class Flow {
@@ -21,7 +21,12 @@ class Flow {
     }
     
     func start() {
-        guard !questions.isEmpty else { return }
-        router.routeTo(question: "")
+        guard let firstQuestion = questions.first else { return }
+        router.routeTo(question: firstQuestion) { [weak self] _ in
+            guard let self = self else { return }
+            guard let questionIndex = self.questions.index(of: firstQuestion) else { return }
+            let nextQuestion = self.questions[questionIndex + 1]
+            self.router.routeTo(question: nextQuestion) { _ in }
+        }
     }
 }
