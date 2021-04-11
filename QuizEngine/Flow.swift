@@ -16,7 +16,6 @@ protocol Router {
 class Flow {
     private let router: Router
     private let questions: [String]
-    
     private var result: [String: String] = [:]
     
     init(questions: [String], router: Router) {
@@ -29,21 +28,24 @@ class Flow {
             router.routeTo(result: result)
             return
         }
-        router.routeTo(question: firstQuestion, answerCallback: routeNext(from: firstQuestion))
+        router.routeTo(question: firstQuestion, answerCallback: nextCallBack(from: firstQuestion))
     }
     
-    private func routeNext(from question: String) -> Router.AnswerCallback {
-        return { [weak self] answer in
-            guard let sSelf = self else { return }
-            guard let currentQuestionIndex = sSelf.questions.firstIndex(of: question) else { return }
-            sSelf.result[question] = answer
-            
-            if currentQuestionIndex + 1 < sSelf.questions.count {
-                let nextQuestion = sSelf.questions[currentQuestionIndex + 1]
-                sSelf.router.routeTo(question: nextQuestion, answerCallback: sSelf.routeNext(from: nextQuestion))
-            } else {
-                sSelf.router.routeTo(result: sSelf.result)
-            }
+    private func nextCallBack(from question: String) -> Router.AnswerCallback {
+        return { [weak self] in self?.routeNext(question: question, answer: $0) }
+    }
+    
+    private func routeNext(question: String, answer: String) {
+        guard let currentQuestionIndex = questions.firstIndex(of: question) else { return }
+        result[question] = answer
+        let nextQuestionIndex = currentQuestionIndex + 1
+        
+        if nextQuestionIndex < questions.count {
+            let nextQuestion = questions[nextQuestionIndex]
+            router.routeTo(question: nextQuestion, answerCallback: nextCallBack(from: nextQuestion))
+        } else {
+            router.routeTo(result: result)
         }
     }
+    
 }
