@@ -10,6 +10,8 @@
 		EA30CEFA26194FD8009DDD22 /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30CEF026194FD8009DDD22 /* QuizEngine.framework */; };
 		EA30CF0F26194FF4009DDD22 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30CF0E26194FF4009DDD22 /* FlowTest.swift */; };
 		EA30CF1326194FFD009DDD22 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30CF1226194FFD009DDD22 /* Flow.swift */; };
+		EA88073C266C46CD00E85D44 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88073B266C46CD00E85D44 /* Result.swift */; };
+		EA88073E266C46DE00E85D44 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88073D266C46DE00E85D44 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		EA30CF0026194FD9009DDD22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30CF0E26194FF4009DDD22 /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
 		EA30CF1226194FFD009DDD22 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		EA88073B266C46CD00E85D44 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		EA88073D266C46DE00E85D44 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				EA30CEF426194FD8009DDD22 /* Info.plist */,
 				EA30CF1226194FFD009DDD22 /* Flow.swift */,
+				EA88073D266C46DE00E85D44 /* Router.swift */,
+				EA88073B266C46CD00E85D44 /* Result.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA88073C266C46CD00E85D44 /* Result.swift in Sources */,
+				EA88073E266C46DE00E85D44 /* Router.swift in Sources */,
 				EA30CF1326194FFD009DDD22 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
