@@ -12,6 +12,9 @@
 		EA30CF1326194FFD009DDD22 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30CF1226194FFD009DDD22 /* Flow.swift */; };
 		EA88073C266C46CD00E85D44 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88073B266C46CD00E85D44 /* Result.swift */; };
 		EA88073E266C46DE00E85D44 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88073D266C46DE00E85D44 /* Router.swift */; };
+		EA880740266C476100E85D44 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88073F266C476100E85D44 /* GameTest.swift */; };
+		EA880744266C491200E85D44 /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA880743266C491200E85D44 /* RouterSpy.swift */; };
+		EA9D7322266C4E78001B7B02 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D7321266C4E78001B7B02 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,9 @@
 		EA30CF1226194FFD009DDD22 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		EA88073B266C46CD00E85D44 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EA88073D266C46DE00E85D44 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		EA88073F266C476100E85D44 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
+		EA880743266C491200E85D44 /* RouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpy.swift; sourceTree = "<group>"; };
+		EA9D7321266C4E78001B7B02 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 				EA30CF1226194FFD009DDD22 /* Flow.swift */,
 				EA88073D266C46DE00E85D44 /* Router.swift */,
 				EA88073B266C46CD00E85D44 /* Result.swift */,
+				EA9D7321266C4E78001B7B02 /* Game.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -88,6 +95,8 @@
 			children = (
 				EA30CF0026194FD9009DDD22 /* Info.plist */,
 				EA30CF0E26194FF4009DDD22 /* FlowTest.swift */,
+				EA880743266C491200E85D44 /* RouterSpy.swift */,
+				EA88073F266C476100E85D44 /* GameTest.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
@@ -204,6 +213,7 @@
 				EA88073C266C46CD00E85D44 /* Result.swift in Sources */,
 				EA88073E266C46DE00E85D44 /* Router.swift in Sources */,
 				EA30CF1326194FFD009DDD22 /* Flow.swift in Sources */,
+				EA9D7322266C4E78001B7B02 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA30CF0F26194FF4009DDD22 /* FlowTest.swift in Sources */,
+				EA880740266C476100E85D44 /* GameTest.swift in Sources */,
+				EA880744266C491200E85D44 /* RouterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
