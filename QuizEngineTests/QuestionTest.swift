@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import QuizEngine
+@testable import QuizEngine_MacOS
 
 class QuestionTest: XCTestCase {
     let type = "a string"

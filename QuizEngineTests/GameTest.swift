@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-import QuizEngine
+import QuizEngine_MacOS
 
 final class GameTest: XCTestCase {
     
