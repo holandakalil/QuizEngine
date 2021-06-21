@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA30CEEF26194FD8009DDD22"
-               BuildableName = "QuizEngine.framework"
-               BlueprintName = "QuizEngine"
+               BuildableName = "QuizEngine_MacOS.framework"
+               BlueprintName = "QuizEngine_MacOS"
                ReferencedContainer = "container:QuizEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA30CEF826194FD8009DDD22"
-               BuildableName = "QuizEngineTests.xctest"
-               BlueprintName = "QuizEngineTests"
+               BuildableName = "QuizEngineTests_MacOS.xctest"
+               BlueprintName = "QuizEngineTests_MacOS"
                ReferencedContainer = "container:QuizEngine.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA30CEEF26194FD8009DDD22"
-            BuildableName = "QuizEngine.framework"
-            BlueprintName = "QuizEngine"
+            BuildableName = "QuizEngine_MacOS.framework"
+            BlueprintName = "QuizEngine_MacOS"
             ReferencedContainer = "container:QuizEngine.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
