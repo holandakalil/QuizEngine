@@ -9,7 +9,8 @@ import Foundation
 import XCTest
 import QuizEngine
 
-final class GameTest: XCTestCase {
+@available(*, deprecated)
+final class DeprecatedGameTest: XCTestCase {
     
     let router = RouterSpy()
     var game: Game<String, String, RouterSpy>!
