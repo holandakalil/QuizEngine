@@ -133,8 +133,8 @@
 			children = (
 				EA30CF0026194FD9009DDD22 /* Info.plist */,
 				EA30CF0E26194FF4009DDD22 /* FlowTest.swift */,
-				EA880743266C491200E85D44 /* RouterSpy.swift */,
 				EA88073F266C476100E85D44 /* DeprecatedGameTest.swift */,
+				EA880743266C491200E85D44 /* RouterSpy.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
