@@ -10,8 +10,6 @@ import XCTest
 @testable import QuizEngine
 
 class FlowTest: XCTestCase {
-    private let router = RouterSpy()
-
     func test_start_withNoQuestions_doesNotRouteToQuestion() {
         makeSUT(questions: []).start()
         
@@ -124,7 +122,7 @@ class FlowTest: XCTestCase {
     
     // MARK: - Helpers
     private let router = RouterSpy()
-    weak var weakSUT: Flow<RouterSpy>?
+    private weak var weakSUT: Flow<RouterSpy>?
     
     override func tearDown() {
         super.tearDown()
