@@ -136,19 +136,30 @@ class FlowTest: XCTestCase {
         return sut
     }
     
-    private final class DelegateSpy: Router {
+    private final class DelegateSpy: Router, QuizDelegate {
+        typealias Question = String
+        typealias Answer = String
+        
         var routedQuestions: [String] = []
         var routedResults: Result<String, String>? = nil
         
         var answerCallback: ((String) -> Void) = { _ in }
         
-        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
+        func handle(question: String, answerCallback: @escaping (String) -> Void) {
             routedQuestions.append(question)
             self.answerCallback = answerCallback
         }
         
-        func routeTo(result: Result<String, String>) {
+        func handle(result: Result<String, String>) {
             routedResults = result
+        }
+        
+        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
+            handle(question: question, answerCallback: answerCallback)
+        }
+        
+        func routeTo(result: Result<String, String>) {
+            handle(result: result)
         }
     }
 }
