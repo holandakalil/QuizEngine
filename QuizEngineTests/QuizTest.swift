@@ -39,7 +39,7 @@ final class QuizTest: XCTestCase {
         XCTAssertEqual(delegate.handledResults!.score, 2)
     }
     
-    private final class DelegateSpy: Router, QuizDelegate {
+    private final class DelegateSpy: QuizDelegate {
         var handledResults: Result<String, String>? = nil
         
         var answerCallback: ((String) -> Void) = { _ in }
@@ -51,14 +51,6 @@ final class QuizTest: XCTestCase {
         
         func handle(result: Result<String, String>) {
             handledResults = result
-        }
-        
-        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
-            handle(question: question, answerCallback: answerCallback)
-        }
-        
-        func routeTo(result: Result<String, String>) {
-            handle(result: result)
         }
     }
 }
