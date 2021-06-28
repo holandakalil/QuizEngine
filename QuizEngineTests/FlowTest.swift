@@ -17,19 +17,19 @@ class FlowTest: XCTestCase {
     func test_start_withNoQuestions_doesNotDelegateQuestionHandling() {
         makeSUT(questions: []).start()
         
-        XCTAssertTrue(delegate.handledQuestions.isEmpty)
+        XCTAssertTrue(delegate.questionsAsked.isEmpty)
     }
     
     func test_start_withOneQuestion_delegatesCorrectQuestionHandling() {
         makeSUT(questions: [q1]).start()
         
-        XCTAssertEqual(delegate.handledQuestions, [q1])
+        XCTAssertEqual(delegate.questionsAsked, [q1])
     }
     
     func test_start_withTwoQuestions_delegatesFirstQuestionHandling() {
         makeSUT(questions: [q1, q2]).start()
         
-        XCTAssertEqual(delegate.handledQuestions.first, q1)
+        XCTAssertEqual(delegate.questionsAsked.first, q1)
     }
     
     func test_startTwice_withTwoQuestions_delegatesFirstQuestionHandlingTwice() {
@@ -38,7 +38,7 @@ class FlowTest: XCTestCase {
         sut.start()
         sut.start()
         
-        XCTAssertEqual(delegate.handledQuestions, [q1, q1])
+        XCTAssertEqual(delegate.questionsAsked, [q1, q1])
     }
     
     func test_startAndAnswerFirstAndSecondQuestions_withThreeQuestions_delegatesSecondAndThirdQuestionsHandling() {
@@ -49,7 +49,7 @@ class FlowTest: XCTestCase {
         delegate.answerCompletion(a1)
         delegate.answerCompletion(a2)
         
-        XCTAssertEqual(delegate.handledQuestions, questions)
+        XCTAssertEqual(delegate.questionsAsked, questions)
     }
     
     func test_startAndAnswerFirstQuestion_withOneQuestion_doesNotDelegateAnotherQuestionHandling() {
@@ -59,7 +59,7 @@ class FlowTest: XCTestCase {
         
         delegate.answerCompletion(a1)
         
-        XCTAssertEqual(delegate.handledQuestions, questions)
+        XCTAssertEqual(delegate.questionsAsked, questions)
     }
     
     func test_start_withOneQuestion_doesNotCompleteQuiz() {
@@ -151,14 +151,14 @@ class FlowTest: XCTestCase {
     }
     
     private final class DelegateSpy: QuizDelegate {
-        var handledQuestions: [String] = []
+        var questionsAsked: [String] = []
         var handledResults: Result<String, String>? = nil
         var completedQuizzes: [[(String, String)]] = []
         
         var answerCompletion: ((String) -> Void) = { _ in }
         
         func answer(for question: String, completion: @escaping (String) -> Void) {
-            handledQuestions.append(question)
+            questionsAsked.append(question)
             self.answerCompletion = completion
         }
         
