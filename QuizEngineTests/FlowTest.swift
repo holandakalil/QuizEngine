@@ -46,8 +46,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: questions)
         sut.start()
         
-        delegate.answerCallback(a1)
-        delegate.answerCallback(a2)
+        delegate.answerCompletion(a1)
+        delegate.answerCompletion(a2)
         
         XCTAssertEqual(delegate.handledQuestions, questions)
     }
@@ -58,7 +58,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: questions)
         sut.start()
         
-        delegate.answerCallback(a1)
+        delegate.answerCompletion(a1)
         
         XCTAssertEqual(delegate.handledQuestions, questions)
     }
@@ -75,7 +75,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: [q1])
         sut.start()
         
-        delegate.answerCallback(a1)
+        delegate.answerCompletion(a1)
         
         XCTAssertEqual(delegate.handledResults?.answer, [q1: a1])
     }
@@ -86,8 +86,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: [q1, q2])
         sut.start()
         
-        delegate.answerCallback(a1)
-        delegate.answerCallback(a2)
+        delegate.answerCompletion(a1)
+        delegate.answerCompletion(a2)
         
         XCTAssertEqual(delegate.handledResults?.answer, [q1: a1, q2: a2])
     }
@@ -98,8 +98,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: [q1, q2]) { _ in 10 }
         sut.start()
         
-        delegate.answerCallback(a1)
-        delegate.answerCallback(a2)
+        delegate.answerCompletion(a1)
+        delegate.answerCompletion(a2)
         
         XCTAssertEqual(delegate.handledResults?.score, 10)
     }
@@ -114,8 +114,8 @@ class FlowTest: XCTestCase {
         }
         sut.start()
         
-        delegate.answerCallback(a1)
-        delegate.answerCallback(a2)
+        delegate.answerCompletion(a1)
+        delegate.answerCompletion(a2)
         
         XCTAssertEqual(receivedAnswers, [q1: a1, q2: a2])
     }
@@ -140,11 +140,11 @@ class FlowTest: XCTestCase {
         var handledQuestions: [String] = []
         var handledResults: Result<String, String>? = nil
         
-        var answerCallback: ((String) -> Void) = { _ in }
+        var answerCompletion: ((String) -> Void) = { _ in }
         
-        func handle(question: String, answerCallback: @escaping (String) -> Void) {
+        func answer(for question: String, completion: @escaping (String) -> Void) {
             handledQuestions.append(question)
-            self.answerCallback = answerCallback
+            self.answerCompletion = completion
         }
         
         func handle(result: Result<String, String>) {
