@@ -46,14 +46,18 @@ final class ScoreTest: XCTestCase {
         XCTAssertEqual(score, 2)
     }
     
+    func test_withTooManyCorrectAnswers_oneMathcingAnswer_scoresOne() {
+        let score = BasicScore.score(
+            for: [answer2, answer2],
+            comparingTo: [answer1, answer2, "extra answer"])
+        XCTAssertEqual(score, 1)
+    }
+    
     private final class BasicScore {
         static func score(for answers: [String], comparingTo correctAnswers: [String]) -> Int {
-            var score = 0
-            for (index, answer) in answers.enumerated() {
-                if index >= correctAnswers.count { return score }
-                score += (answer == correctAnswers[index]) ? 1 : 0
+            return zip(answers, correctAnswers).reduce(0) { score, tuple in
+                return score + (tuple.0 == tuple.1 ? 1 : 0)
             }
-            return score
         }
     }
 }
