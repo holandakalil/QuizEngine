@@ -9,40 +9,40 @@ import Foundation
 import XCTest
 
 final class ScoreTest: XCTestCase {
-    let correct1 = "correct1"
-    let correct2 = "correct2"
+    let answer1 = "an answer"
+    let answer2 = "another answer"
     let wrong = "wrong"
     
     func test_noAnswers_scoresZero() {
         XCTAssertEqual(BasicScore.score(for: [], comparingTo: []), 0)
     }
     
-    func test_oneWrongAnswer_scoresZero() {
-        XCTAssertEqual(BasicScore.score(for: [wrong], comparingTo: [correct1]), 0)
+    func test_oneNotMathcingAnswer_scoresZero() {
+        XCTAssertEqual(BasicScore.score(for: [wrong], comparingTo: [answer1]), 0)
     }
     
-    func test_oneRightAnswer_scoresOne() {
-        XCTAssertEqual(BasicScore.score(for: [correct1], comparingTo: [correct1]), 1)
+    func test_oneMathcingAnswer_scoresOne() {
+        XCTAssertEqual(BasicScore.score(for: [answer1], comparingTo: [answer1]), 1)
     }
     
-    func test_oneRightAndOneWrongAnswer_scoresOne() {
+    func test_oneMathcingAndOneNotMathcingAnswer_scoresOne() {
         let score = BasicScore.score(
-            for: [correct1, wrong],
-            comparingTo: [correct1, correct2])
+            for: [answer1, wrong],
+            comparingTo: [answer1, answer2])
         XCTAssertEqual(score, 1)
     }
     
-    func test_twoRightAnswer_scoresTwo() {
+    func test_twoMathcingAnswers_scoresTwo() {
         let score = BasicScore.score(
-            for: [correct1, correct2],
-            comparingTo: [correct1, correct2])
+            for: [answer1, answer2],
+            comparingTo: [answer1, answer2])
         XCTAssertEqual(score, 2)
     }
     
-    func test_withUnequalSizedData_scoresTwo() {
+    func test_withTooManyAnswers_twoMathcingAnswers_scoresTwo() {
         let score = BasicScore.score(
-            for: [correct1, correct2, "another answer"],
-            comparingTo: [correct1, correct2])
+            for: [answer1, answer2, "extra answer"],
+            comparingTo: [answer1, answer2])
         XCTAssertEqual(score, 2)
     }
     
